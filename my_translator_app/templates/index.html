@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Simplifier & Translator</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contribute">For Donations</a>
+        <a href="/contact">Contact</a>
+    </div>
+    
+
+    <div class="container">
+        <h1>Text Simplifier & Translator</h1>
+
+        <form method="POST">
+            <label for="text">Enter your text:</label>
+            <textarea name="text" rows="4" cols="50">{{ user_text }}</textarea> <!-- Keeps user input -->
+            <br>
+            <button type="submit">Simplify & Translate</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if detected_language %}
+            <p>Detected Language: {{ languages[detected_language] }}</p>
+        {% endif %}
+
+        {% if simplified_text %}
+            <p><strong>Simplified Text:</strong> {{ simplified_text }}</p>
+        {% endif %}
+
+        <!-- Add PayPal Button -->
+        <div class="donate">
+            <h2>Support Us</h2>
+            <!-- Replace with your PayPal button code -->
+            <form action="https://www.paypal.com/donate" method="post" target="_top">
+                <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+                <input type="hidden" name="item_name" value="Donation">
+                <input type="hidden" name="currency_code" value="USD">
+                <input type="submit" value="Donate with PayPal">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
